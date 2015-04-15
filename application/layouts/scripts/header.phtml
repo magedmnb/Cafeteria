@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Cafteria</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+        <link href="<?php echo $this->baseUrl(); ?>/assets/css/font-awesome.css" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl(); ?>/assets/css/style.css" rel="stylesheet">
+        <link href="<?php echo $this->baseUrl(); ?>/assets/css/pages/dashboard.css" rel="stylesheet">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+              <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+    </head>
+    <body>
+
+        <div class="subnavbar">
+            <div class="subnavbar-inner">
+                <div class="container">
+                    <ul class="mainnav">
+                        <?php
+                        $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                        $end = end((explode('/', rtrim($url, '/'))));
+                        $pathParts = explode('/', parse_url($url, PHP_URL_PATH));
+
+                        $lastParts = array(array_pop($pathParts), array_pop($pathParts));
+
+
+
+                        $authorization = Zend_Auth::getInstance();
+
+                        if ($authorization->getIdentity()->status == 2) {
+
+
+
+                            if ($lastParts[1] == "index" || $end == "index") {
+                                ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/index"><i class="icon-home"></i><span style="color:blue;">Home</span> </a> </li>
+                            <?php } else { ?>
+                                <li ><a href="<?php echo $this->baseUrl(); ?>/index"><i class="icon-home"></i><span >Home</span> </a> </li>
+                            <?php } ?>
+                            <?php if ($lastParts[1] == "Product" || $end == "Product") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/Product"><i class="icon-list"></i><span style="color:blue;">Products</span> </a> </li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/Product"><i class="icon-list"></i><span>Products</span> </a> </li>
+                            <?php } ?>
+                            <?php if ($lastParts[1] == "users" || $end == "users") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/users"><i class="icon-user"></i><span style="color:blue;">Users</span> </a></li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/users"><i class="icon-user"></i><span>Users</span> </a></li>
+                            <?php } ?>
+                                   <?php if ($lastParts[1] == "category" || $end == "category") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/category"><i class="icon-list-ol"></i><span style="color:blue;">Category</span> </a></li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/category"><i class="icon-list-ol"></i><span>Category</span> </a></li>
+                            <?php } ?>
+                            <?php if ($lastParts[1] == "ManualOrder" || $end == "ManualOrder") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/ManualOrder"><i class="icon-bar-chart"></i><span style="color:blue;">Manual Orders</span> </a> </li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/ManualOrder"><i class="icon-bar-chart"></i><span>Manual Orders</span> </a> </li>
+                            <?php } ?>
+                            <?php if ($lastParts[1] == "Checks" || $end == "Checks") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/Checks"><i class="icon-check"></i><span style="color:blue;">Checks</span> </a> </li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/Checks"><i class="icon-check"></i><span>Checks</span> </a> </li>
+                            <?php }
+                        } else { ?>
+
+                            <?php if ($lastParts[1] == "frontend" || $end == "frontend") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/frontend"><i class="icon-home"></i><span style="color:blue;">Home</span> </a> </li>
+                            <?php } else { ?>
+                                <li ><a href="<?php echo $this->baseUrl(); ?>/frontend"><i class="icon-home"></i><span >Home</span> </a> </li>
+                            <?php } ?>
+                            <?php if ($lastParts[1] == "Myorders" || $end == "Myorders") { ?>
+                                <li class="active"><a href="<?php echo $this->baseUrl(); ?>/Myorders"><i class="icon-list"></i><span style="color:blue;">My Orders</span> </a> </li>
+                            <?php } else { ?>
+                                <li><a href="<?php echo $this->baseUrl(); ?>/Myorders"><i class="icon-list"></i><span>My Orders</span> </a> </li>
+                            <?php } ?>
+
+                        <?php } ?>
+
+                        <?php
+                        $authorization = Zend_Auth::getInstance();
+
+                        if ($authorization->hasIdentity()) {
+                            ?>
+                            <li ><img style="margin-left:600%;margin-top:6%;" src="<?php echo $this->baseUrl(); ?>/assets/img/users/<?php echo $authorization->getIdentity()->user_img; ?>" /> </li>
+                            <li ><a style="margin-left:540%;" href="#"><i class="icon-lock"></i><span><?php echo $authorization->getIdentity()->user_name; ?></span> </a> </li>
+                            <li ><a style="margin-left:490%;" href="<?php echo $this->baseurl(); ?>/login/logout"><i class="icon-signout"></i><span>Logout</span> </a> </li>
+
+<?php } ?>
+                    </ul>
+                </div>
+                <!-- /container --> 
+            </div>
+            <!-- /subnavbar-inner --> 
+        </div>
+        <!-- /subnavbar -->

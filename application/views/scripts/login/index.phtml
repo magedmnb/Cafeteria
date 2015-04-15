@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8">
+    <title>Login - Bootstrap Admin Template</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/font-awesome.css" rel="stylesheet">
+   
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/style.css" rel="stylesheet" type="text/css">
+<link href="<?php echo $this->baseUrl(); ?>/assets/css/pages/signin.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+	
+	
+
+
+<div class="account-container register">
+	
+	<div class="content clearfix">
+		
+		<form action="<?php echo $this->baseUrl(); ;?>/login/login" method="post">
+		
+			<h1 style="margin-left:30%;">Cafeteria</h1>		
+
+				<div class="field">
+					<span style="color:black;" for="email">Email &nbsp&nbsp&nbsp&nbsp&nbsp:</span>
+					<input style="border:1px solid black;" type="text" id="email" name="user_email" value="" placeholder="Email" />
+				</div> <!-- /field -->
+				
+					
+				<div class="field">
+					<span style="color:black;"  for="password">Password:</span>
+					<input style="border:1px solid black;" type="password" id="password" name="user_password" value="" placeholder="Password" class="login"/>
+				</div> <!-- /field -->
+				
+			
+			
+			<div class="login-actions">
+				
+						
+				<button class="button" style="margin-right:30%; box-shadow: 5px 5px 5px #888888;">Login</button>
+				
+			</div> <!-- .actions -->
+			
+			
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
+
+
+
+<div class="login-extra">
+	<a href="#" style="color:blue;text-decoration: underline;">Forget Password ?</a>
+</div> <!-- /login-extra -->
+
+
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/jquery-1.7.2.min.js"></script>
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/bootstrap.js"></script>
+
+<script src="<?php echo $this->baseUrl(); ?>/assets/js/signin.js"></script>
+
+</body>
+
+</html>
